@@ -32,8 +32,9 @@ async def message_handler(message: Message) -> None:
         await message.answer(f"⚠️ Ваше сообщение содержит запрещённое слово: <b>{bad_word}</b>.")
         try:
             await message.delete()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.exception(f"Failed to delete message: {message.text}: {e}")
+        logger.info(f"Deleted message from {message.from_user.id}: {message.text}")  # type: ignore
 
 
 async def main():
