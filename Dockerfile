@@ -19,4 +19,4 @@ COPY uv.lock pyproject.toml /app/
 RUN uv sync
 
 # Копируем приложение
-COPY app /app/app
+COPY bot /app/bot
